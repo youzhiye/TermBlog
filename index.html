@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>x-z.me</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/jquery.terminal.min.css" rel="stylesheet"/>
+    <link href="./css/github-markdown.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.mousewheel-min.js"></script>
+    <script src="./js/jquery.terminal.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </head>
+<body class="fullborad">
+<script>
+    jQuery(function($, undefined) {
+    terminal = $('#blog_term').terminal(function(command,term) {
+        term.pause();
+        var reg = /^cat/;
+        if(reg.test(command)){
+            $.post("/lala",{command: command}).then(function(response){
+                if(response === '404'){
+                    term.echo("Article not found!", {
+                        finalize: function(div) {
+                            div.css("color", "blue");
+                            }
+                        }).resume();
+                }
+                else{
+                    $("#mkdown").html(response);
+                    $("#mkdown1").modal();
+                    term.echo('').resume();
+                }
+            })
+        }
+        else{
+            $.post("/lala",{command: command}).then(function(response){
+                if(response === '403'){
+                    term.echo('You input error!', {
+                        finalize: function(div) {
+                            div.css("color", "red");
+                            }
+                        }).resume();
+                }
+                else{
+                    term.echo(response, {
+                        finalize: function(div) {
+                            div.css("color", "orange");
+                            }
+                        }).resume();
+                    }
+            });
+        }
+    }, {
+        greetings: 'type "help" for some tips',
+        onBlur: function() {
+            return false;
+        },
+        name: 'blog',
+        height: 530,
+        prompt: 'guest@zhiye$ '
+    });
+});
+</script>
+<script>
+    var i = 1;
+    function Onclear(){
+        terminal.clear()
+    }
+    function Actions(argument){
+        $.post("/lala",{command: argument}).then(function(response){
+                $("#mkdown").html(response);
+                $("#mkdown1").modal();
+        })
+    }
+    function change(){
+        if( i === 1){
+            $("html").css("background-color",'black');
+            i++;
+        }
+        else if(i === 2 ){
+            $(".fullborad").css('background-color','black');
+            $('.terminal').css({'background-color':'black','color':'white'});
+            $(".cmd").css({'background-color':'black','color':'white'});
+            $('.options').css('border-right', "1px solid white");
+            $('.topbar').css("color",'white');
+            i++;
+        }
+        else if(i === 3){
+            $("html").css("background-color",'white');
+            i++;
+        }
+        else{
+            $(".fullborad").css('background-color','white');
+            $('.terminal').css({'background-color':'white','color':'black'});
+            $(".cmd").css({'background-color':'white','color':'black'});
+            $('.options').css('border-right', "1px solid black");
+            $('.topbar').css("color",'black');
+            i=1;
+        }
+    }
+</script>
+<nav>
+    <ul class="options">
+        <li><a href='javascript:void(0)' onclick="Onclear()">清屏</a></li><br>
+        <li><a href="javascript:void(0)" onclick="Theme()">主题</a></li><br>
+        <li><a href="javascript:void(0)" onclick="categories()">分类</a></li><br>
+        <li><a href="javascript:void(0)" onclick="Actions('Links')">友链</a></li><br>
+        <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
+        <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
+        <li><a href="javascript:void(0)" onclick="change()">更换配色/主题</a></li>
+    </ul>
+</nav>
+<span class="topbar">blog@zhiye# Welecome</span>
+<div class="shell-view1" id="blog_term"></div>
+<div id="mkdown"></div>
+</body>
+</html>

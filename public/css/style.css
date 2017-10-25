@@ -1,0 +1,62 @@
+.options {
+    margin-top: 15px;
+    border-right: 1px solid black;
+    width: 13%;
+    height: 570px;
+}
+.fullborad {
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 90%;
+    height: 600px;
+    margin: 0 auto;
+    margin-top: 18px;
+    box-shadow: 0 0 25px #b4b1b1;
+}
+.topbar{
+    position: relative;
+    left: 45%;
+    bottom: 580px;
+}   
+.shell-view1{
+    position: relative;
+    left: 15%;
+    bottom: 570px;
+    overflow-wrap: break-word;
+    width: 83%;
+    overflow-y: auto;
+}
+.not404 .cmd{
+    background-color: black;  
+    color: white; 
+}
+.not404 .terminal{
+    background-color: black;
+    color: white;
+}
+.not404{
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    background-color: black;
+}
+.Oops{
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+html{
+    overflow-y: hidden;
+}
+.terminal, .cmd{
+    background-color: white;
+    color: black;
+    font-family: Courier New;
+}
+.fullborad .terminal,.fullborad .cmd,.fullborad .terminal .terminal-output div div,.fullborad .cmd .prompt{
+    font-size: 16px;
+    line-height: 20px;
+}
+.fullborad .prompt{
+    font-weight: bold;
+}
