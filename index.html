@@ -14,6 +14,7 @@
     <script src="./js/jquery.mousewheel-min.js"></script>
     <script src="./js/jquery.terminal.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/cookie.js"></script>
   </head>
 <body class="fullborad">
 <script>
@@ -64,45 +65,8 @@
         height: 530,
         prompt: 'guest@zhiye$ '
     });
+    checkCookie()
 });
-</script>
-<script>
-    var i = 1;
-    function Onclear(){
-        terminal.clear()
-    }
-    function Actions(argument){
-        $.post("/lala",{command: argument}).then(function(response){
-                $("#mkdown").html(response);
-                $("#mkdown1").modal();
-        })
-    }
-    function change(){
-        if( i === 1){
-            $("html").css("background-color",'black');
-            i++;
-        }
-        else if(i === 2 ){
-            $(".fullborad").css('background-color','black');
-            $('.terminal').css({'background-color':'black','color':'white'});
-            $(".cmd").css({'background-color':'black','color':'white'});
-            $('.options').css('border-right', "1px solid white");
-            $('.topbar').css("color",'white');
-            i++;
-        }
-        else if(i === 3){
-            $("html").css("background-color",'white');
-            i++;
-        }
-        else{
-            $(".fullborad").css('background-color','white');
-            $('.terminal').css({'background-color':'white','color':'black'});
-            $(".cmd").css({'background-color':'white','color':'black'});
-            $('.options').css('border-right', "1px solid black");
-            $('.topbar').css("color",'black');
-            i=1;
-        }
-    }
 </script>
 <nav>
     <ul class="options">
@@ -112,7 +76,7 @@
         <li><a href="javascript:void(0)" onclick="Actions('Links')">友链</a></li><br>
         <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
         <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
-        <li><a href="javascript:void(0)" onclick="change()">更换配色/主题</a></li>
+        <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
     </ul>
 </nav>
 <span class="topbar">blog@zhiye# Welecome</span>
