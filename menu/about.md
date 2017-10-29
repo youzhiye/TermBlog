@@ -13,10 +13,9 @@
 3, 优化细节，浏览体验等。
 ```
 ## About Me  
-```
+
 选择恐惧症患者，具有懒癌和死宅属性。 
 
-github：http://github.com/youzhiye 
-weibo ：http://weibo.com/u/5813130944
+github：<http://github.com/youzhiye>   
+weibo ：<http://weibo.com/u/5813130944>  
 mail:   you_zhiye@163.com
-```
