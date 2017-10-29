@@ -9,7 +9,7 @@ function Actions(argument){
 }
 function change(i1){
     if( i1 === 0){
-        setCookie('i1',i1,1);
+        setCookie('i1',i1,100);
         i++;
     }
     else if( i1 === 1){
@@ -19,7 +19,7 @@ function change(i1){
         $('.options').css('border-right', "1px solid black");
         $('.topbar').css("color",'black');
         $("html").css("background-color",'black');
-        setCookie('i1',i1,1);
+        setCookie('i1',i1,100);
         i1++;
     }
     else if(i1 === 2 ){
@@ -28,7 +28,7 @@ function change(i1){
         $(".cmd").css({'background-color':'black','color':'white'});
         $('.options').css('border-right', "1px solid white");
         $('.topbar').css("color",'white');
-        setCookie('i1',i1,1);
+        setCookie('i1',i1,100);
         i1++;
     }
     else if(i1 === 3){
@@ -38,7 +38,7 @@ function change(i1){
         $('.options').css('border-right', "1px solid white");
         $('.topbar').css("color",'white');
         $("html").css("background-color",'white');
-        setCookie('i1',i1,1);
+        setCookie('i1',i1,100);
         i1++;
     }
     else{
@@ -47,7 +47,7 @@ function change(i1){
         $(".cmd").css({'background-color':'white','color':'black'});
         $('.options').css('border-right', "1px solid black");
         $('.topbar').css("color",'black');
-        setCookie('i1',i1,1);
+        setCookie('i1',i1,100);
         i1=1;
     }
 }
