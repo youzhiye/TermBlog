@@ -3,7 +3,7 @@
 一个对搜索引擎极不友好的博客。  
 基于express，简洁干净，无数据库。  
 
-##部署
+## 部署
 ```bash
 npm install express ejs marked --save
 git clone https://github.com/youzhiye/TermBlog.git
