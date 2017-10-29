@@ -23,7 +23,7 @@ app.post('/lala',function(req,res){
                         ArtNameArr.forEach(function(item,index){
                                 articleContents = articleContents + item.replace(/.md/,'')+'\n';
                         })
-                        res.send('There are '+ArticleNum+' articles:\n'+ articleContents.slice(0,-1));
+                        res.send("Here're "+ArticleNum+' articles:\n'+ articleContents.slice(0,-1));
                 }
                 else if(response === 'links'){
                         res.send('Here are some links:\n放放酱[Gabriel]	 https://godeep.pro\n麻瓜恒[C1tas]	   http://blog.c1tas.com\n畅师傅[balis0ng]	http://balis0ng.com\nYan_1_20 [Yan]	 https://yan-1-20.github.io\n所长[lucifaer]	  http://lucifaer.com\n学霸[S_Dante]	   http://over-rainbow.cn\n廖妹[0xcc]	      http://blog.z0z.me\n老板[昂三年]	     http://l_ang.ren\n脆脆[a2ir]	      https://a2ir.github.io')
