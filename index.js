@@ -14,7 +14,7 @@ app.post('/lala',function(req,res){
                 var response = req.body.command;
                 var reg = /^cat /;
                 if(response === 'help'){
-                        res.send('There are some tips help you access this blog.\nYou can type follow commands:\nclear            清屏\nabout            关于\nartcile/ls       列出文章\nlinks            友链\ncat [article]    查看文章\nup/down          [上一条/下一条]输入')
+                        res.send("Here're some tips which perhaps help you get to know the blog.\nYou can type the following commands:\nclear            清屏\nabout            关于\nartcile/ls       列出文章\nlinks            友链\ncat [article]    查看文章\nup/down          [上一条/下一条]输入")
                 }
                 else if(response === 'ls'|| response === 'article'){
                         var articleContents = '';
@@ -26,7 +26,7 @@ app.post('/lala',function(req,res){
                         res.send('There are '+ArticleNum+' articles:\n'+ articleContents.slice(0,-1));
                 }
                 else if(response === 'links'){
-                        res.send('There are my friendlinks:\n放放酱[Gabriel]	 https://godeep.pro\n麻瓜恒[C1tas]	   http://blog.c1tas.com\n畅师傅[balis0ng]	http://balis0ng.com\nYan_1_20 [Yan]	 https://yan-1-20.github.io\n所长[lucifaer]	  http://lucifaer.com\n学霸[S_Dante]	   http://over-rainbow.cn\n廖妹[0xcc]	      http://blog.z0z.me\n老板[昂三年]	     http://l_ang.ren\n脆脆[a2ir]	      https://a2ir.github.io')
+                        res.send('Here are some links:\n放放酱[Gabriel]	 https://godeep.pro\n麻瓜恒[C1tas]	   http://blog.c1tas.com\n畅师傅[balis0ng]	http://balis0ng.com\nYan_1_20 [Yan]	 https://yan-1-20.github.io\n所长[lucifaer]	  http://lucifaer.com\n学霸[S_Dante]	   http://over-rainbow.cn\n廖妹[0xcc]	      http://blog.z0z.me\n老板[昂三年]	     http://l_ang.ren\n脆脆[a2ir]	      https://a2ir.github.io')
                 }
                 else if(reg.test(response)){
                         var resArtName = response.replace(/cat /,'');

@@ -41,7 +41,7 @@
         else{
             $.post("/lala",{command: command}).then(function(response){
                 if(response === '403'){
-                    term.echo('You input error!', {
+                    term.echo('Error Input!', {
                         finalize: function(div) {
                             div.css("color", "red");
                             }
