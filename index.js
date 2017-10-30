@@ -4,6 +4,7 @@ const ejs = require('ejs')
 var fs = require('fs')
 var os = require('os')
 const app = express()
+app.disable('x-powered-by');
 var bodyParser = require("body-parser")
 app.use(express.static('public'))
 app.set('views','./views')
