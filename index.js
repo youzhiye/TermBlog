@@ -10,10 +10,15 @@ app.use(express.static('public'))
 app.set('views','./views')
 app.set('view engine','ejs')
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.post('/lala',function(req,res){
         if(req.body.command != ''){
                 var response = req.body.command;
                 var reg = /^cat /;
+                var illegalRegFuck = /fuck/;
+                var illegalRegsb = /sb/;
+                var illegalRegmmp = /mmp/;
+                var illegalRegnima = /nima/;
                 if(response === 'help'){
                         res.send("Here're some tips which perhaps help you get to know the blog.\nYou can type the following commands:\nclear            清屏\nabout            关于\nartcile/ls       列出文章\nlinks            友链\ncat [article]    查看文章\nup/down          [上一条/下一条]输入")
                 }
@@ -79,6 +84,18 @@ app.post('/lala',function(req,res){
                                         res.render('menu',{title:'友链',mdown:html});
                                 }
                         })
+                }
+                else if(illegalRegFuck.test(response)){
+                        res.send("What's the fuck?");
+                }
+                else if(illegalRegmmp.test(response)){
+                        res.send("你说啥？")
+                }
+                else if(illegalRegnima.test(response)){
+                        res.send("mmp")
+                }
+                else if(illegalRegsb.test(response)){
+                        res.send("喂,110么,这有一XX")
                 }
                 else{
                         res.send('403');
