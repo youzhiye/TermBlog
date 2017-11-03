@@ -5,12 +5,18 @@
 
 ### 部署
 
+安装及运行
+
 ```bash
 git clone https://github.com/youzhiye/TermBlog.git
 cd TermBlog
 npm install --save 
 node index.js or npm start
 ```  
+
+发布文章
+
+只需将md文档放到posts目录中即可.
 
 *注：当前版本为开发体验版本，更多的细节及体验正在优化中。。。*  
 ### ChangeLog
