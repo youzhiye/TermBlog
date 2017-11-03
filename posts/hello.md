@@ -1,10 +1,20 @@
-# first
-ddd`uuuu`
-## secondcd
-dddffgg
-```bash
-cat 1.txt
-rm ddd.png
+# Hello World
+
 ```
-dddd[dd](http://dd.com)dd
-test/`test`
+一切的一切，都是上天最好的安排
+```
+
+ 这是本博客的第一篇文章
+
+从上半年大二实验班的淘汰赛开始，就想自己写一个基于命令行的博客系统，但是由于自己本身的懒，，一直拖到了现在。感谢19大，终于有时间来code博客（实在也是闲的没事）。
+
+现在为初步的体验版本，主要的心思在优化细节，增加功能，提升浏览体验。
+
+测试这篇文章的时候，对markdown的css文件不是太满意，后续会修改并增加代码高亮。
+
+```node
+console.log("Hello World");
+```
+ok,文章首尾呼应.
+<br>
+<br>
