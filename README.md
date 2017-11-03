@@ -6,10 +6,10 @@
 ### 部署
 
 ```bash
-npm install express ejs marked --save
 git clone https://github.com/youzhiye/TermBlog.git
 cd TermBlog
-node index.js
+npm install --save 
+node index.js or npm start
 ```  
 
 *注：当前版本为开发体验版本，更多的细节及体验正在优化中。。。*  
