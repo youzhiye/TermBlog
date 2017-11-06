@@ -12,7 +12,7 @@
 
 测试这篇文章的时候，对markdown的css文件不是太满意，后续会修改并增加代码高亮。
 
-```node  
+```js  
 var a=1;
 console.log("Hello World!");
 ```
