@@ -2,7 +2,7 @@ function Onclear(){
     terminal.clear()
 }
 function Actions(argument){
-    $.post("/lala",{command: argument}).then(function(response){
+    $.post("/cli",{command: argument}).then(function(response){
             $("#mkdown").html(response);
             $("#mkdown1").modal();
     })
