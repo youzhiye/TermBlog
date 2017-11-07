@@ -34,6 +34,9 @@
                 }
             })
         }
+        else if(command === ''){
+            term.echo('').resume();
+        }
         else{
             $.post("/options",{command: command}).then(function(response){
                 if(response === '403'){
