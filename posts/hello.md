@@ -12,8 +12,12 @@
 
 测试这篇文章的时候，对markdown的css文件不是太满意，后续会修改并增加代码高亮。
 
-```node
-console.log("Hello World");
+```js  
+var a=1;
+console.log("Hello World!");
+```
+```bash  
+echo "Hello World!"
 ```
 ok,文章首尾呼应.
 <br>
