@@ -1,3 +1,4 @@
+//处理常规的操作
 var express = require('express')
 var router = express.Router()
 var fs = require('fs')
