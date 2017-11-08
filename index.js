@@ -83,12 +83,12 @@ app.post('/cli',function(req,res){
 app.get('/',function(req,res){
     res.sendFile(__dirname+"/"+"index.html")
 })
-app.get('/a/',function(req,res){
+app.get(/a/,function(req,res){
     res.render('3')
 })
-app.get('/4/',function(req,res){
+/*app.get(/4/,function(req,res){
     res.sendFile(__dirname+"/"+'404.html')
-})
+})*/
 app.get('*',function(req,res){
     res.render('4')
 })
