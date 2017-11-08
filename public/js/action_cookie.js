@@ -1,6 +1,9 @@
 function Onclear(){
     terminal.clear()
 }
+function Beef(){
+    window.open('http://beef.x-z.me')
+}
 function Actions(argument){
     $.post("/cli",{command: argument}).then(function(response){
             $("#mkdown").html(response);

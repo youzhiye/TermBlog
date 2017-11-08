@@ -14,12 +14,10 @@ router.post('/',function(req,res){
             }
             else{
                 var html = marked(data.toString());
-                if(request === 'Links')
-                    res.render('menu',{title:request,mdown:html});
-                else if(request === 'Help')
-                    res.render('menu',{title:request,mdown:html});
-                else
+                if(request === 'About')
                     res.render('layout',{title:request,mdown:html});
+                else 
+                    res.render('menu',{title:request,mdown:html});
             }
         })
     }
