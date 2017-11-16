@@ -58,5 +58,5 @@ node index.js or npm start
 * 更加便捷的部署方式和代码同步方式。 
 
 ### 感谢  
-> 本博客系统各种前端jq库的开发者，以及[放放酱](https://godeep.pro)的体验反馈
+> 本博客系统各种前端jq库的开发者，以及[放放酱](https://godeep.pro)的体验反馈  
 > 给本项目点star的你
