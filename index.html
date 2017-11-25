@@ -21,6 +21,7 @@
 <script>
     jQuery(function($, undefined) {
     terminal = $('#blog_term').terminal(function(command,term) {
+        var command = $.trim(command);
         var reg = /^cat/;
         if(reg.test(command)){
             $.post("/article",{command: command}).then(function(response){
@@ -79,7 +80,7 @@
     <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
     </ul>
 </nav>
-<span class="topbar">blog@zhiye# Welecome</span>
+<span class="topbar"><b>blog@zhiye# Welecome</b></span>
 <div class="shell-view1" id="blog_term"></div>
 <div id="mkdown"></div>
 <div class="footer1">
