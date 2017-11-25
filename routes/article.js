@@ -1,8 +1,8 @@
 //处理文章模块
-var express = require('express')
-var router = express.Router()
-var fs = require('fs')
-var marked = require('marked')
+var express = require('express');
+var router = express.Router();
+var fs = require('fs');
+var marked = require('marked');
 
 router.post('/',function(req,res){
     var response = req.body.command;
@@ -19,12 +19,15 @@ router.post('/',function(req,res){
                     var html = marked(data.toString());
                     res.render('layout',{title:resArtName,mdown:html});
                 }
-            })
+            });
         }
         else{
             res.send("404");
         }
     }
-})
+    else{
+        res.send("404");
+    }
+});
 
 module.exports = router;
