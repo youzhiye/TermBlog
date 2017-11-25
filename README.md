@@ -4,9 +4,9 @@
 > 基于express，炫酷简洁干净，无数据库。  
 
 >> 白色主题  
-<img src="./img/08.jpg">  
+<img src="./img/white_theme.jpg">  
 > 黑色主题  
-<img src="./img/33.jpg">
+<img src="./img/black_theme.jpg">
 
 ### 部署
 
