@@ -12,7 +12,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "github-markdown-css": "^2.9.0",
-    "jquery.terminal": "^1.10.0",
-    "marked": "^0.3.6"
+    "jquery.terminal": "^1.10.1",
+    "marked": "^0.3.7"
   }
 }
