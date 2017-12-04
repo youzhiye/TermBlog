@@ -78,6 +78,7 @@
     <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
     <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
     <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
+    <div id="musicPlayer"></div>
     </ul>
 </nav>
 <span class="topbar"><b>blog@zhiye# Welecome</b></span>
@@ -87,4 +88,13 @@
     <span>&copy; Company 2017</span>&Powered by <a href="https://github.com/youzhiye/TermBlog">TermBlog</a>
 </div>
 </body>
+<script src="./js/jquery.simplemusic.js"></script>
+<script>
+    $(function(){
+        $("#musicPlayer").simplemusic({
+            autoplay: false,
+            urls: ["http://devtest.qiniudn.com/Preparation.mp3"]
+        });
+    });
+</script>
 </html>
