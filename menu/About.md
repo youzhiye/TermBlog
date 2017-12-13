@@ -18,4 +18,4 @@
 
 github：<http://github.com/youzhiye>   
 weibo ：<http://weibo.com/u/5813130944>  
-mail:   you_zhiye@163.com
+mail&nbsp;&nbsp;&nbsp;&nbsp;：<you_zhiye@163.com>
