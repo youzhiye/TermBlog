@@ -10,39 +10,39 @@ function Actions(argument){
             $("#mkdown1").modal();
     })
 }
-function change(i1){
-    if( i1 === 0){
-        setCookie('i1',i1,100);
-        i++;
+function change(themeColor){
+    if( themeColor === 0){
+        setCookie('themeColor',themeColor,100);
+        themeColor++;
     }
-    else if( i1 === 1){
+    else if( themeColor === 1){
         $(".fullborad").css('background-color','white');
         $('.terminal').css({'background-color':'white','color':'black'});
         $(".cmd").css({'background-color':'white','color':'black'});
         $('.options').css('border-right', "1px solid black");
         $('.topbar').css("color",'black');
         $("html").css("background-color",'black');
-        setCookie('i1',i1,100);
-        i1++;
+        setCookie('themeColor',themeColor,100);
+        themeColor++;
     }
-    else if(i1 === 2 ){
+    else if(themeColor === 2 ){
         $(".fullborad").css('background-color','black');
         $('.terminal').css({'background-color':'black','color':'white'});
         $(".cmd").css({'background-color':'black','color':'white'});
         $('.options').css('border-right', "1px solid white");
         $('.topbar').css("color",'white');
-        setCookie('i1',i1,100);
-        i1++;
+        setCookie('themeColor',themeColor,100);
+        themeColor++;
     }
-    else if(i1 === 3){
+    else if(themeColor === 3){
         $(".fullborad").css('background-color','black');
         $('.terminal').css({'background-color':'black','color':'white'});
         $(".cmd").css({'background-color':'black','color':'white'});
         $('.options').css('border-right', "1px solid white");
         $('.topbar').css("color",'white');
         $("html").css("background-color",'white');
-        setCookie('i1',i1,100);
-        i1++;
+        setCookie('themeColor',themeColor,100);
+        themeColor++;
     }
     else{
         $(".fullborad").css('background-color','white');
@@ -50,8 +50,8 @@ function change(i1){
         $(".cmd").css({'background-color':'white','color':'black'});
         $('.options').css('border-right', "1px solid black");
         $('.topbar').css("color",'black');
-        setCookie('i1',i1,100);
-        i1=1;
+        setCookie('themeColor',themeColor,100);
+        themeColor=1;
     }
 }
 
@@ -77,21 +77,21 @@ function getCookie(cname) {
     return 0;
 }  
 function addCookie(){
-    i1 = Number(getCookie('i1'));
-    if(i1 == 4){
-        change(1)
+    themeColor = Number(getCookie('themeColor'));
+    if(themeColor == 4){
+        change(1);
     }
     else{
-        change(i1+1);
+        change(themeColor+1);
     }
 }
 
 function checkCookie()
 {
-    i1=getCookie('i1')
-    i1 = Number(i1);
-    if (i1!=null && i1!=0)
-        change(i1) 
+    themeColor=getCookie('themeColor')
+    themeColor = Number(themeColor);
+    if (themeColor!=null && themeColor!=0)
+        change(themeColor); 
     else 
-        change(0)
+        change(0);
 }

@@ -22,40 +22,10 @@
     jQuery(function($, undefined) {
     terminal = $('#blog_term').terminal(function(command,term) {
         var command = $.trim(command);
-        var reg = /^cat/;
-        if(reg.test(command)){
-            $.post("/article",{command: command}).then(function(response){
-                if(response === '404'){
-                    term.echo("[[;blue;]Article not found!]").resume();
-                }
-                else{
-                    $("#mkdown").html(response);
-                    $("#mkdown1").modal();
-                    term.echo('').resume();
-                }
-            })
-        }
-        else if(command === ''){
-            term.echo('').resume();
-        }
-        else{
-            $.post("/options",{command: command}).then(function(response){
-                if(response === '403'){
-                    term.echo('[[;red;]Error Input!]').resume();
-                }
-                else if(/400/.test(response)){
-                    response = response.replace('400','');
-                    term.echo('[[;grey;]'+response+']').resume();
-                }
-                else{
-                    term.echo(response, {
-                        finalize: function(div) {
-                            div.css("color", "orange");
-                            }
-                        }).resume();
-                    }
-            });
-        }
+        if(command === '') term.echo('').resume();
+        else if(/^func /.test(command)) $.post("/moudle",{command: command}).then(function(response){callback(response)});
+        else if(/^cat /.test(command)) $.post("/article",{command: command}).then(function(response){callback(response)});
+        else $.post("/options",{command: command}).then(function(response){callback(response)});
     }, {
         greetings: 'type "help" for some tips',
         completion: ['cat','article','help','links','about','ls'],
@@ -66,7 +36,20 @@
         height: 530,
         prompt: 'guest@zhiye$ '
     });
-    checkCookie()
+    function callback(response){
+        var dictTips = {
+            'Add': "[[;pink;]Add!!]",
+            'Error Input': "[[;red;]Error Input!]",
+            'Bad Request': "[[;purple;]Bad Request!!]",
+            'Article not found': "[[;blue;]Article not found!]",
+            'To many arguments': "[[;green;]To many arguments!]",
+        }
+        if(response in dictTips) terminal.echo(dictTips[response]).resume();
+        else if(/55885400/.test(response)) terminal.echo('[[;grey;]'+response.replace('55885400','')+']').resume();
+        else if(/mkdown1/.test(response)){$("#mkdown").html(response);$("#mkdown1").modal();terminal.echo('').resume();}
+        else terminal.echo(response, {finalize: function(div) {div.css("color", "orange");}}).resume();
+    }
+    checkCookie();
 });
 </script>
 <nav>

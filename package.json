@@ -9,6 +9,7 @@
   "author": "youzhiye",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "github-markdown-css": "^2.9.0",

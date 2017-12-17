@@ -1,17 +1,16 @@
 //处理导航部分的操作
-var express = require('express')
-var router = express.Router()
-var fs = require('fs')
-var marked = require('marked')
+var express = require('express');
+var router = express.Router();
+var fs = require('fs');
+var marked = require('marked');
 
 router.post('/',function(req,res){
     var request = req.body.command;
-    var regArticleName = /\w+/;
-    if(regArticleName.test(request)){
+    var regArticleName = /[^\w]+/;
+    if(!regArticleName.test(request)){
         fs.readFile('menu/'+request+'.md',function(err,data){
-            if(err){
-                res.send("404");
-            }
+            if(err) 
+                res.send("Article not found");
             else{
                 var html = marked(data.toString());
                 if(request === 'About')
@@ -22,7 +21,7 @@ router.post('/',function(req,res){
         })
     }
     else{
-        res.send('403')
+        res.send('Error Input');
     }
 })
 

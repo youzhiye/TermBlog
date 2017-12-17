@@ -9,6 +9,7 @@ const os = require('os');
 var article = require('./routes/article');
 var options = require('./routes/options');
 var click = require('./routes/click');
+var moudle = require('./routes/moudle');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use('/article',article);
+app.use('/moudle',moudle)
 app.use('/options',options);
 app.use('/cli',click);
 
