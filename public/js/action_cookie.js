@@ -16,40 +16,42 @@ function change(themeColor){
         themeColor++;
     }
     else if( themeColor === 1){
-        $(".fullborad").css('background-color','white');
-        $('.terminal').css({'background-color':'white','color':'black'});
-        $(".cmd").css({'background-color':'white','color':'black'});
+        $(".right").css('background-color','black');
+        $(".fullBorder").css('background-color','rgb(255, 255, 254)');
+        $('.terminal').css({'background-color':'rgb(255, 255, 254)','color':'black'});
+        $(".cmd").css({'background-color':'rgb(255, 255, 254)','color':'black'});
         $('.options').css('border-right', "1px solid black");
-        $('.topbar').css("color",'black');
-        $("html").css("background-color",'black');
+        $('.topBar').css("color",'black');
         setCookie('themeColor',themeColor,100);
         themeColor++;
     }
     else if(themeColor === 2 ){
-        $(".fullborad").css('background-color','black');
+        $(".right").css('background-color','black');
+        $(".fullBorder").css('background-color','black');
         $('.terminal').css({'background-color':'black','color':'white'});
         $(".cmd").css({'background-color':'black','color':'white'});
         $('.options').css('border-right', "1px solid white");
-        $('.topbar').css("color",'white');
+        $('.topBar').css("color",'white');
         setCookie('themeColor',themeColor,100);
         themeColor++;
     }
     else if(themeColor === 3){
-        $(".fullborad").css('background-color','black');
+        $(".right").css('background-color','rgb(255, 255, 254)');
+        $(".fullBorder").css('background-color','black');
         $('.terminal').css({'background-color':'black','color':'white'});
         $(".cmd").css({'background-color':'black','color':'white'});
         $('.options').css('border-right', "1px solid white");
-        $('.topbar').css("color",'white');
-        $("html").css("background-color",'white');
+        $('.topBar').css("color",'white');
         setCookie('themeColor',themeColor,100);
         themeColor++;
     }
     else{
-        $(".fullborad").css('background-color','white');
-        $('.terminal').css({'background-color':'white','color':'black'});
-        $(".cmd").css({'background-color':'white','color':'black'});
+        $(".right").css('background-color','rgb(255, 255, 254)');
+        $(".fullBorder").css('background-color','rgb(255, 255, 254)');
+        $('.terminal').css({'background-color':'rgb(255, 255, 254)','color':'black'});
+        $(".cmd").css({'background-color':'rgb(255, 255, 254)','color':'black'});
         $('.options').css('border-right', "1px solid black");
-        $('.topbar').css("color",'black');
+        $('.topBar').css("color",'black');
         setCookie('themeColor',themeColor,100);
         themeColor=1;
     }
@@ -95,3 +97,25 @@ function checkCookie()
     else 
         change(0);
 }
+$(function(){
+    $('.clickright').hide();
+    var w=screen.width;
+    var h=screen.height;
+    var left=$(".left");
+    var right=$(".right");
+     
+    $('.clickleft').click(function(){
+        left.animate({marginLeft:+w},1000);
+        left.css("z-index","-5");
+        right.css({"z-index":"-8","margin-left":"0"});
+        $(this).hide();
+        $('.clickright').show();
+    });
+     
+    $('.clickright').click(function(){
+        left.css({"z-index":"-10","margin-left":"0"});
+        right.animate({marginLeft:-w},1000);
+        $('.clickleft').show();
+        $(this).hide();
+    });
+});
