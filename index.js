@@ -4,6 +4,7 @@ const ejs = require('ejs');
 const bodyParser = require("body-parser");
 const fs = require('fs');
 const os = require('os');
+const marked = require('marked');
 
 //导入路由文件
 var article = require('./routes/article');
@@ -28,7 +29,12 @@ app.use('/cli',click);
 
 //首页
 app.get('/',function(req,res){
-    res.sendFile(__dirname+"/"+"index.html")
+    list = fs.readdirSync('posts/');
+    var listMap = new Map();
+    for(let i of list){
+        listMap.set(i.replace('.md',''),fs.statSync('posts/'+i).atime.toLocaleString().slice(5,10));
+    }
+    res.render('index',{list: listMap});
 });
 
 //404
@@ -43,5 +49,17 @@ app.get('*',function(req,res){
 
 //监听运行端口
 app.listen(3000,function(){
+    list = fs.readdirSync('posts/');
+    for(let i of list){
+        fs.readFile('posts/'+i,function(err,data){
+            if(err) console.log(err)
+            else {
+                head = fs.readFileSync('views/head.ejs','utf8');
+                foot = fs.readFileSync('views/foot.ejs','utf8');
+                title = i.replace('.md','');
+                fs.writeFile('public/posts/'+title+'.html',head.replace('x-z',title)+marked(data.toString())+foot,(err)=>{if(err) console.log(err)})
+            }
+        })
+    }
     console.log("Running...");
 });
