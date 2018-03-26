@@ -104,6 +104,9 @@ $(function(){
     var left=$(".left");
     var right=$(".right");
     if(w<600) w=1366;
+    if(w>1600){
+        $('.right .fullBorder').css('width','1366');
+    }
      
     $('.clickleft').click(function(){
         left.animate({marginLeft:+w},1000);
