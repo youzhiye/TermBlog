@@ -32,7 +32,7 @@ app.get('/',function(req,res){
     list = fs.readdirSync('posts/');
     var listMap = new Map();
     for(let i of list){
-        listMap.set(i.replace('.md',''),fs.statSync('posts/'+i).atime.toLocaleString().slice(5,10));
+        listMap.set(i.replace('.md',''),fs.statSync('posts/'+i).atime.toLocaleDateString());
     }
     res.render('index',{list: listMap});
 });
