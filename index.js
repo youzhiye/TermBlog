@@ -10,6 +10,10 @@ const marked = require('marked');
 var article = require('./routes/article');
 var options = require('./routes/options');
 var click = require('./routes/click');
+var base64 = require('./routes/base64');
+var PicTob64 = require('./routes/PicTob64');
+var upload = require('./routes/upload')
+var jsonrpc = require('./routes/jsonrpc');
 //var moudle = require('./routes/moudle');
 
 const app = express();
@@ -20,12 +24,16 @@ app.set('views','./views');
 app.set('view engine','ejs');
 
 //使用静态文件及路由
+app.use(bodyParser.json({limit: '1mb'})); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use('/article',article);
-//app.use('/moudle',moudle)
 app.use('/options',options);
 app.use('/cli',click);
+app.use('/PicTob64',PicTob64);
+app.use('/base64',base64);
+app.use('/upload',upload);
+app.use('/jsonrpc',jsonrpc);
 
 //首页
 app.get('/',function(req,res){
