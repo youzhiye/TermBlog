@@ -7,10 +7,10 @@ router.post('/',function(req,res){
     res.set('Content-Type', 'application/json');
     res.set('Connection', 'Upgrade, close');
     if(req.body.jsonrpc==='2.0'&&req.body.method&&req.body.params&&req.body.id){
+        var name = req.body.params[0];
+        var Password = req.body.params[1];
         if(req.body.method == 'login'){
-            var name = req.body.params[0];
-            var Password = req.body.params[1];
-            if(name === 'youzhiye' && Password === 'lalala'){
+            if(name === 'name' && Password === 'pass'){
                 var token = md5(name+':'+Password);
                 var result = {"jsonrpc":"2.0","result":token,"id":req.body.id,"error":null}
                 res.send(result)
@@ -21,7 +21,7 @@ router.post('/',function(req,res){
             }
         }
         else if(req.body.method == 'load'){
-            if(req.body.params[0] == '7f55dd855b2fc74a3cae5fca7fae905d'){
+            if(req.body.params[0] == md5('name'+':'+'pass')){
                 var module = req.body.params[1];
                 try{
                 var UserModule = require('./'+module);
