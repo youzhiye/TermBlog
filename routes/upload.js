@@ -16,7 +16,7 @@ var upload = multer({ storage: storage });
 
 router.post('/', upload.single('file'), function (req, res, next) {
     var base64 = fs.readFileSync('./public/uploads/'+req.file.filename);
-    var base64return = {'base64':base64.toString('base64')}
+    var base64return = {'base64':base64.toString('base64'),'filename':req.file.filename}
     res.send(base64return);
 })
 

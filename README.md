@@ -34,6 +34,26 @@ node index.js //or npm start
 
 因为上个版本路由文件已经模块化，所以可自行向routes文件夹内添加功能模块让博客更个性化（后续一些自用功能模块不打算开源）。  
 
+#### Plugin example
+
+```hello.js
+exports.hello = function() {
+    return 'Hello World';
+}
+```
+
+#### 插件导入  
+
+```bash
+guest@zhiye$ Plugins
+Authenticate
+root# load hello
+```
+#### 自定义插件
+
+* 将写好的文件放入routes文件夹下
+* 在jsonrpc.js文件中写入插件的执行方法
+
 ### ChangeLog
 
 #### 当前版本1.1.0
@@ -45,6 +65,7 @@ node index.js //or npm start
 * 删除了些没用的内容    
 TODO:  
 * 下个版本增加代码的可读性  
+* 卸载插件
 
 #### V1.0.0
 

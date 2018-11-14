@@ -23,8 +23,13 @@ router.post('/',function(req,res){
         else if(req.body.method == 'load'){
             if(req.body.params[0] == '7f55dd855b2fc74a3cae5fca7fae905d'){
                 var module = req.body.params[1];
-                var UserModule = require(module);
+                try{
+                var UserModule = require('./'+module);
                 var run = UserModule.hello();
+                }
+                catch(err){
+                    var run = 'err';
+                }
                 var result = {"jsonrpc":"2.0","result":run,"id":req.body.id,"error":null}
                 res.send(result);
             }

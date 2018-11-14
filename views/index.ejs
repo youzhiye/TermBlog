@@ -1,120 +1,124 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <title>x-z</title>
-    <link rel="shortcut icon" href="./favicon.ico"/>
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/jquery.terminal.min.css" rel="stylesheet"/>
+    <link href="./css/jquery.terminal.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/github-markdown.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/prism.css" rel="stylesheet" />   
+    <link href="./css/prism.css" rel="stylesheet" />
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery.terminal.min.js"></script>
     <script src="./js/jquery.mousewheel-min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/action_cookie.js"></script>
 </head>
+
 <body>
-<script>
-    jQuery(function($, undefined) {
-    terminal = $('#blog_term').terminal(function(command,term) {
-        var command = $.trim(command);
-        if(command === '') term.echo('').resume();
-        else if (command === 'testOne'){
-            term.push("/jsonrpc",{
-                login: true,
-                greetings: "Welcome.",
-                prompt: "root# ",
-                onExit: function(){
-                    return true;
-                },
-                onBlur: function() {
-                // the height of the body is only 2 lines initialy
-                return false;
+    <script>
+        jQuery(function ($, undefined) {
+            terminal = $('#blog_term').terminal(function (command, term) {
+                var command = $.trim(command);
+                if (command === '') term.echo('').resume();
+                else if (command === 'Plugins') {
+                    term.push("/jsonrpc", {
+                        login: true,
+                        greetings: "Welcome.",
+                        prompt: "root# ",
+                        onExit: function () {
+                            return true;
+                        },
+                        onBlur: function () {
+                            // the height of the body is only 2 lines initialy
+                            return false;
+                        }
+                    });
                 }
-            });
-        }
-        else if(command === 'PicToB64') $.post("/PicTob64",{command: command}).then(function(response){callback(response)});
-        else if(/^base64 /.test(command)) $.post("/base64",{command: command}).then(function(response){callback(response)});
-        else if(/^func /.test(command)) $.post("/moudle",{command: command}).then(function(response){callback(response)});
-        else if(/^cat /.test(command)) $.post("/article",{command: command}).then(function(response){callback(response)});
-        else $.post("/options",{command: command}).then(function(response){callback(response)});
-    }, {
-        greetings: 'type "help" for some tips',
-        completion: ['cat','article','help','links','about','ls'],
-        onBlur: function() {
-            return false;
-        },
-        name: 'blog',
-        height: 530,
-        prompt: 'guest@zhiye$ '
-    });
+                else if (command === 'PicToB64') $.post("/PicTob64", { command: command }).then(function (response) { callback(response) });
+                else if (/^base64 /.test(command)) $.post("/base64", { command: command }).then(function (response) { callback(response) });
+                else if (/^func /.test(command)) $.post("/moudle", { command: command }).then(function (response) { callback(response) });
+                else if (/^cat /.test(command)) $.post("/article", { command: command }).then(function (response) { callback(response) });
+                else $.post("/options", { command: command }).then(function (response) { callback(response) });
+            }, {
+                    greetings: 'type "help" for some tips',
+                    completion: ['cat', 'article', 'help', 'links', 'about', 'ls', 'Plugins', 'PicToB64', 'base64'],
+                    onBlur: function () {
+                        return false;
+                    },
+                    name: 'blog',
+                    height: 530,
+                    prompt: 'guest@zhiye$ '
+                });
 
-	function callback(response){
-        var dictTips = {
-            'Add': "[[;pink;]Add!!]",
-            'Error Input': "[[;red;]Error Input!]",
-            'Bad Request': "[[;purple;]Bad Request!!]",
-            'Article not found': "[[;blue;]Article not found!]",
-            'To many arguments': "[[;green;]To many arguments!]",
-        }
-        if(response in dictTips) terminal.echo(dictTips[response]).resume();
-        else if(/55885400/.test(response)) terminal.echo('[[;grey;]'+response.replace('55885400','')+']').resume();
-        else if(/mkdown1/.test(response)){$("#mkdown").html(response);$("#mkdown1").modal();terminal.echo('').resume();}
-        else terminal.echo(response, {finalize: function(div) {div.css("color", "orange");}}).resume();
-    }
-    checkCookie();
-	})
-</script>
-<div class="left">
-	<div class="split">
-	<p class="Title1">Blog</p>
-	<span class="subTitle">我也不知道哪天会更新文章</span>
-	<div class="articles">
-		<%for(var [g,i] of list) {%>
-			<ul class="testUI">
-				<li><span><%= i%></span> <a href="posts/<%= g%>.html" target="_blank"><%= g%></a></li>
-			</ul>
-        <%}%>
-	</div>
-</div>
-</div>
+            function callback(response) {
+                var dictTips = {
+                    'Add': "[[;pink;]Add!!]",
+                    'Error Input': "[[;red;]Error Input!]",
+                    'Bad Request': "[[;purple;]Bad Request!!]",
+                    'Article not found': "[[;blue;]Article not found!]",
+                    'To many arguments': "[[;green;]To many arguments!]",
+                }
+                if (response in dictTips) terminal.echo(dictTips[response]).resume();
+                else if (/55885400/.test(response)) terminal.echo('[[;grey;]' + response.replace('55885400', '') + ']').resume();
+                else if (/mkdown1/.test(response)) { $("#mkdown").html(response); $("#mkdown1").modal(); terminal.echo('').resume(); }
+                else terminal.echo(response, { finalize: function (div) { div.css("color", "orange"); } }).resume();
+            }
+            checkCookie();
+        })
+    </script>
+    <div class="left">
+        <div class="split">
+            <p class="Title1">Blog</p>
+            <span class="subTitle">我也不知道哪天会更新文章</span>
+            <div class="articles">
+                <%for(var [g,i] of list) {%>
+                <ul class="testUI">
+                    <li><span>
+                            <%= i%></span> <a href="posts/<%= g%>.html" target="_blank">
+                            <%= g%></a></li>
+                </ul>
+                <%}%>
+            </div>
+        </div>
+    </div>
 
-<div class="right">
-	<div class="fullBorder">
-	<nav>
-    <ul class="options">
-    <li><a href='javascript:void(0)' onclick="Onclear()">清屏</a></li><br>
-    <li><a href="javascript:void(0)" onclick="Actions('Links')">友链</a></li><br>
-    <li><a href="javascript:void(0)" onclick="Actions('Bookmark')">书签</a></li><br>
-    <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
-    <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
-    <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
-    <div id="musicPlayer"></div>
-    </ul>
-	</nav>
-	<span class="topBar"><b>blog@zhiye# Welecome</b></span>
-	<div class="shell-view1" id="blog_term"></div>
-	</div>
-</div>
-<div id="mkdown"></div>
-<div class="footer1">
-    <span>&copy; Company 2017</span>&Powered by <a href="https://github.com/youzhiye/TermBlog" target="blank">TermBlog</a>
-</div>
-<a href="#" class="clickleft"><i class="fa fa-angle-double-left fa-5x"></i></a>
-<a href="#" class="clickright"><i class="fa fa-angle-double-right fa-5x"></i></a>
+    <div class="right">
+        <div class="fullBorder">
+            <nav>
+                <ul class="options">
+                    <li><a href='javascript:void(0)' onclick="Onclear()">清屏</a></li><br>
+                    <li><a href="javascript:void(0)" onclick="Actions('Links')">友链</a></li><br>
+                    <li><a href="javascript:void(0)" onclick="Actions('Bookmark')">书签</a></li><br>
+                    <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
+                    <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
+                    <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
+                    <div id="musicPlayer"></div>
+                </ul>
+            </nav>
+            <span class="topBar"><b>blog@zhiye# Welecome</b></span>
+            <div class="shell-view1" id="blog_term"></div>
+        </div>
+    </div>
+    <div id="mkdown"></div>
+    <div class="footer1">
+        <span>&copy; Company 2017</span>&Powered by <a href="https://github.com/youzhiye/TermBlog" target="blank">TermBlog</a>
+    </div>
+    <a href="#" class="clickleft"><i class="fa fa-angle-double-left fa-5x"></i></a>
+    <a href="#" class="clickright"><i class="fa fa-angle-double-right fa-5x"></i></a>
 </body>
 <script src="./js/jquery.simplemusic.js"></script>
 <script>
-    $(function(){
+    $(function () {
         $("#musicPlayer").simplemusic({
             autoplay: false,
             urls: ["https://moeplayer.b0.upaiyun.com/aplayer/preparation.mp3"]
         });
     });
-</script> 
+</script>
+
 </html>
