@@ -24,6 +24,22 @@
     terminal = $('#blog_term').terminal(function(command,term) {
         var command = $.trim(command);
         if(command === '') term.echo('').resume();
+        else if (command === 'testOne'){
+            term.push("/jsonrpc",{
+                login: true,
+                greetings: "Welcome.",
+                prompt: "root# ",
+                onExit: function(){
+                    return true;
+                },
+                onBlur: function() {
+                // the height of the body is only 2 lines initialy
+                return false;
+                }
+            });
+        }
+        else if(command === 'PicToB64') $.post("/PicTob64",{command: command}).then(function(response){callback(response)});
+        else if(/^base64 /.test(command)) $.post("/base64",{command: command}).then(function(response){callback(response)});
         else if(/^func /.test(command)) $.post("/moudle",{command: command}).then(function(response){callback(response)});
         else if(/^cat /.test(command)) $.post("/article",{command: command}).then(function(response){callback(response)});
         else $.post("/options",{command: command}).then(function(response){callback(response)});
@@ -36,7 +52,8 @@
         name: 'blog',
         height: 530,
         prompt: 'guest@zhiye$ '
-	});
+    });
+
 	function callback(response){
         var dictTips = {
             'Add': "[[;pink;]Add!!]",
@@ -74,7 +91,6 @@
     <li><a href='javascript:void(0)' onclick="Onclear()">清屏</a></li><br>
     <li><a href="javascript:void(0)" onclick="Actions('Links')">友链</a></li><br>
     <li><a href="javascript:void(0)" onclick="Actions('Bookmark')">书签</a></li><br>
-    <li><a href="javascript:void(0)" onclick="Beef()">Beef</a></li><br>
     <li><a href="javascript:void(0)" onclick="Actions('About')">关于我</a></li><br>
     <li><a href="javascript:void(0)" onclick="Actions('Help')">使用帮助</a></li><br>
     <li><a href="javascript:void(0)" onclick="addCookie()">更换配色/主题</a></li>
