@@ -2,14 +2,14 @@ var express = require('express');
 var md5 = require('md5');
 var router = express.Router();
 
-router.post('/',function(req,res){
+router.post('/',async function(req,res){
     res.set('Upgrade', 'h2,h2c')
     res.set('Content-Type', 'application/json');
     res.set('Connection', 'Upgrade, close');
     if(req.body.jsonrpc==='2.0'&&req.body.method&&req.body.params&&req.body.id){
-        var name = req.body.params[0];
-        var Password = req.body.params[1];
         if(req.body.method == 'login'){
+            var name = req.body.params[0];
+            var Password = req.body.params[1];
             if(name === 'name' && Password === 'pass'){
                 var token = md5(name+':'+Password);
                 var result = {"jsonrpc":"2.0","result":token,"id":req.body.id,"error":null}
@@ -24,12 +24,13 @@ router.post('/',function(req,res){
             if(req.body.params[0] == md5('name'+':'+'pass')){
                 var module = req.body.params[1];
                 try{
-                var UserModule = require('./'+module);
-                var run = UserModule.hello();
+                var UserModule = require('../moudle/'+module);
+                var run =await UserModule.hello();
                 }
                 catch(err){
-                    var run = 'err';
+                    var run = ('err');
                 }
+                if(typeof(run) === 'undefined') run = 'your code running with some problems.';
                 var result = {"jsonrpc":"2.0","result":run,"id":req.body.id,"error":null}
                 res.send(result);
             }
