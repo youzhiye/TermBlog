@@ -4,11 +4,11 @@
 > 基于express，炫酷简洁干净，无数据库。  
 
 >> 首页
-<img src="./img/index.jpg">
+<img src="./img/index.jpg">  
 >> 白色主题  
 <img src="./img/white_theme.jpg">  
 >> 黑色主题  
-<img src="./img/black_theme.jpg">
+<img src="./img/black_theme.jpg">  
 
 ### 部署
 
@@ -46,10 +46,8 @@ exports.hello = function() {
 
 * async/await(es7,推荐)  
 ```hello.js
-exports.hello = function() {
-    return await new Promise((res,rej)=>{
-        res('Hello World');
-    })
+exports.hello =async function() {
+    return "hello world"
 }
 ```
 
