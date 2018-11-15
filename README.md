@@ -5,9 +5,9 @@
 
 >> 首页
 <img src="./img/index.jpg">
->白色主题  
+>> 白色主题  
 <img src="./img/white_theme.jpg">  
-> 黑色主题  
+>> 黑色主题  
 <img src="./img/black_theme.jpg">
 
 ### 部署
@@ -26,19 +26,30 @@ node index.js //or npm start
 只需将md文档放到posts目录中即可.系统会在运行后自动生成静态html文件（见index.js 65-68行）
 
 *注：当前版本为开发体验版本，更多的细节及体验正在优化中。。。*  
+
 #### 导航栏操作
 
-当前版本只能自己看源码实现。只需修改index.ejs里边对应的js函数即可自己定制导航栏  
+当前版本只能自己看源码实现。修改index.ejs里边对应的js函数即可自己定制导航栏  
 
 #### 路由文件
 
-因为上个版本路由文件已经模块化，所以可自行向routes文件夹内添加功能模块让博客更个性化（后续一些自用功能模块不打算开源）。  
+因为上个版本路由文件已经模块化，所以可自行向routes文件夹内添加功能模块让博客更个性化。  
 
 #### Plugin example
 
+* 常规写法（因为异步回调问题，可能无返回值）  
 ```hello.js
 exports.hello = function() {
     return 'Hello World';
+}
+```  
+
+* async/await(es7,推荐)  
+```hello.js
+exports.hello = function() {
+    return await new Promise((res,rej)=>{
+        res('Hello World');
+    })
 }
 ```
 
@@ -51,12 +62,21 @@ root# load hello
 ```
 #### 自定义插件
 
-* 将写好的文件放入routes文件夹下
-* 在jsonrpc.js文件中写入插件的执行方法
+* 将写好的文件放入moudle文件夹下  
+* 在jsonrpc.js文件中写入插件的执行方法  
+*function.js为内置模块，无需load*  
 
-### ChangeLog
+### ChangeLog  
 
-#### 当前版本1.1.0
+#### 当前版本1.2.0  
+
+* 插件功能支持es7语法，解决无返回值的问题  
+* 插件文件整合到moudle文件夹下  
+* 插件不会一直处于导入状态，执行结束后需重新调用（解决每次修改代码都要重新运行npm start命令的问题）  
+TODO:  
+* 下个版本增加代码的可读性  
+
+#### V1.1.0
 
 * 增加base64编码命令，包括对图片的编码  
 * 增加高权限认证操作  
@@ -64,8 +84,7 @@ root# load hello
 * 修复播放音乐图标无法显示的问题  
 * 删除了些没用的内容    
 TODO:  
-* 下个版本增加代码的可读性  
-* 卸载插件
+* ~~卸载插件~~
 
 #### V1.0.0
 
