@@ -46,7 +46,7 @@
                 else $.post("/options", { command: command }).then(function (response) { callback(response) });
             }, {
                     greetings: 'type "help" for some tips',
-                    completion: ['cat', 'article', 'help', 'links', 'about', 'ls', 'Plugins', 'PicToB64', 'base64'],
+                    completion: ['cat', 'article', 'help', 'links', 'about', 'ls'],
                     onBlur: function () {
                         return false;
                     },
@@ -115,7 +115,7 @@
 <script>
     $(function () {
         $("#musicPlayer").simplemusic({
-            autoplay: false,
+            autoplay: true,
             urls: ["http://music.163.com/song/media/outer/url?id=472685705.mp3"]
         });
     });
