@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+body{
+    background:rgb(248, 244, 244);
+    width:100%;
+    height:100%;
+}
+.Title{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    padding-left: 20px;
+    padding-bottom: 15px; 
+    font-size: 26px;
+    font-weight: bold;
+}
+.subTitle{
+    padding-left: 20px;
+    font-size: 16px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.articles{
+    position: relative;
+    top: 0;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.split{
+    position: absolute;
+    top: 70px;
+    left: 40%;
+    height: 477px;
+    border-left: 1px solid black;
+}
+.footer{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    position: fixed;
+    margin:0 auto;
+    bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
+.testUI{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: rgb(36, 2, 2);
+    list-style:none;
+    padding: 0;
+}
+.testUI span{
+    padding-right:20px; 
+}
+.testUI a{
+    font-size: 20px;
+}
+li{
+    padding-bottom:10px;
+}
+.articles .testUI ul{
+    margin-bottom: 0px;
+}
