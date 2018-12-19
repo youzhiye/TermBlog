@@ -1,14 +1,21 @@
 </ul>
 </div>
 </div>
+<div id="musicPlayer"></div>
 <div class="footer">
 <span>&copy; Company 2017</span>&Powered by <a href="https://github.com/youzhiye/TermBlog" target="blank">TermBlog</a>
 </div>
 </body>
+<script src="./js/jquery.simplemusic.js"></script>
 <script>
     var obj = document.getElementsByTagName('li');
     obj[obj.length-1].style.cssText="padding-bottom: 0px";
     var obj1 = document.getElementsByTagName('ul')[0].style.cssText='margin-bottom:0px';
-
+    $(function () {
+        $("#musicPlayer").simplemusic({
+            autoplay: true,
+            urls: ["http://music.163.com/song/media/outer/url?id=421934070.mp3"]
+        });
+    });
 </script>
 </html>
